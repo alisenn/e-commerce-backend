@@ -14,21 +14,21 @@ RUN apk add --no-cache \
 # Copy package files
 COPY package.json ./
 
-# Install dependencies (This will generate package-lock.json)
+# Install dependencies
 RUN npm install
 
 # Copy application files
 COPY . .
 
-# Build the application
-RUN npm run build
+# Build Medusa and Admin
+RUN npm run build && medusa-admin build
 
 # Expose port
 EXPOSE 9000
 
 # Set environment variables
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 ENV PORT=9000
 
-# Start the application
-CMD ["npm", "start"]
+# Start the application in development mode
+CMD ["npm", "run", "dev"]

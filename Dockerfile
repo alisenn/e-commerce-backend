@@ -17,8 +17,8 @@ RUN npm install -g @medusajs/medusa-cli
 # Copy package files
 COPY package.json ./
 
-# Install all dependencies at once
-RUN npm install --legacy-peer-deps
+# Install production dependencies
+RUN npm install --legacy-peer-deps --production
 
 # Copy application files
 COPY . .
@@ -33,5 +33,5 @@ EXPOSE 9000
 ENV NODE_ENV=production
 ENV PORT=9000
 
-# Start the application in development mode
-CMD ["npm", "run", "start"]
+# Start the application in production mode
+CMD ["npm", "start"]

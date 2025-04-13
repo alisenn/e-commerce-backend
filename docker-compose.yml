@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medusa-backend
+    depends_on:
+      - redis
+    ports:
+      - "9000:9000"
+    environment:
+      DATABASE_URL: postgresql://postgres:TnjPudRQGLUtKtRAhbhNRAiRRhGJklDD@shortline.proxy.rlwy.net:31663/railway
+      REDIS_URL: redis://redis
+      NODE_ENV: development
+      JWT_SECRET: supersecret
+      COOKIE_SECRET: supersecret
+      STORE_CORS: http://localhost:8000,https://docs.medusajs.com
+      ADMIN_CORS: http://localhost:5173,http://localhost:9000,https://docs.medusajs.com
+      AUTH_CORS: http://localhost:5173,http://localhost:9000,https://docs.medusajs.com
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  redis:
+    image: redis:7-alpine
+    container_name: medusa-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

@@ -13,10 +13,10 @@
     "medusa"
   ],
   "scripts": {
-    "build": "medusa build",
-    "seed": "medusa exec ./src/scripts/seed.ts",
-    "start": "medusa start",
-    "dev": "npx medusa develop",
+    "build": "node_modules/.bin/medusa build",
+    "admin:build": "node_modules/.bin/medusa-admin build",
+    "start": "node_modules/.bin/medusa start",
+    "dev": "node_modules/.bin/medusa develop"
     "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
     "test:integration:modules": "TEST_TYPE=integration:modules NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit",
     "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit"
@@ -31,9 +31,7 @@
     "@mikro-orm/migrations": "6.4.3",
     "@mikro-orm/postgresql": "6.4.3",
     "awilix": "^8.0.1",
-    "pg": "^8.13.0",
-    "medusa-cli": "^1.8.0"
-
+    "pg": "^8.13.0"
   },
   "devDependencies": {
     "@medusajs/test-utils": "2.7.0",

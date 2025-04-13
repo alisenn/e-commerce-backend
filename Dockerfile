@@ -21,7 +21,7 @@ RUN npm install
 COPY . .
 
 # Build Medusa and Admin
-RUN npm run build && medusa-admin build
+RUN npm run build && npx medusa-admin build
 
 # Expose port
 EXPOSE 9000

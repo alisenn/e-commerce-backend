@@ -13,14 +13,13 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres:TnjPudRQGLUtKtRAhbhNRAiRRhGJklDD@shortline.proxy.rlwy.net:31663/railway
       REDIS_URL: redis://redis
-      NODE_ENV: development
+      NODE_ENV: production
       JWT_SECRET: supersecret
       COOKIE_SECRET: supersecret
       STORE_CORS: http://localhost:8000,https://docs.medusajs.com
       ADMIN_CORS: http://localhost:5173,http://localhost:9000,https://docs.medusajs.com
       AUTH_CORS: http://localhost:5173,http://localhost:9000,https://docs.medusajs.com
       MEDUSA_ADMIN_ONBOARDING: true
-
     volumes:
       - .:/app
       - /app/node_modules

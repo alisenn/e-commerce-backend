@@ -30,8 +30,8 @@ RUN npm run build
 EXPOSE 9000
 
 # Set environment variables
-ENV NODE_ENV=development
+ENV NODE_ENV=production
 ENV PORT=9000
 
 # Start the application in development mode
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

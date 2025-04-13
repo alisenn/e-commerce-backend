@@ -17,9 +17,8 @@ RUN npm install -g @medusajs/medusa-cli
 # Copy package files
 COPY package.json ./
 
-# Install dependencies
-RUN npm install @medusajs/admin
-RUN npm install
+# Install all dependencies at once
+RUN npm install --legacy-peer-deps
 
 # Copy application files
 COPY . .

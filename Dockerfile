@@ -11,18 +11,21 @@ RUN apk add --no-cache \
     g++ \
     postgresql-client
 
+# Install Medusa CLI globally
+RUN npm install -g @medusajs/medusa-cli
+
 # Copy package files
 COPY package.json ./
 
 # Install dependencies
+RUN npm install @medusajs/admin
 RUN npm install
 
 # Copy application files
 COPY . .
 
-# Build Medusa and Admin
-RUN npm run build && node_modules/.bin/medusa-admin build
-
+# Build Medusa
+RUN npm run build
 
 # Expose port
 EXPOSE 9000
